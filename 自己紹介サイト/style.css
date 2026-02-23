@@ -1,0 +1,373 @@
+/*
+  ✅ CSSは「見た目のルール」。
+  形式：セレクタ { プロパティ: 値; }
+  例：p { color: red; }
+  → 「p（文章）を赤くする」という意味。
+
+  ✅ class を使うとき：
+  HTML：<div class="box">
+  CSS ：.box { ... }
+  → ドット「.」が class の印。
+*/
+
+/* =========================
+   0) 変数（色をまとめて管理）
+   ========================= */
+:root{
+  /* --名前 で変数を作れる。使うときは var(--名前) */
+  --nav:#1f2b5a;
+  --sky:#9fc0e6;
+  --card:#8fb5df;
+  --text:#1b1b1b;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --btn:#7aa7d8;
+  --max: 920px;
+  --shadow: 0 6px 18px rgba(0,0,0,.10);
+}
+
+/* =========================
+   1) 全体の下準備
+   ========================= */
+*{
+  box-sizing:border-box;
+  /*
+    ✅ box-sizing は幅計算ルール。
+    border-box にすると「paddingを含めて幅」を計算してくれるので崩れにくい。
+  */
+}
+
+body{
+  margin:0; /* ブラウザの初期余白を消す */
+  font-family: system-ui, -apple-system, "Noto Sans JP", sans-serif;
+  color:var(--text);
+
+  /*
+    ✅ 背景を「上：白」「下：水色」にしてスクショの雰囲気を出す
+    72%より下を水色にする
+  */
+  background: linear-gradient(#ffffff 0, #ffffff 72%, var(--sky) 72%, var(--sky) 100%);
+}
+
+/* =========================
+   2) 上部ナビ
+   ========================= */
+.topbar{
+  background:var(--nav);
+  color:#fff;
+  height:44px;
+  display:flex;         /* 中の要素を横並びにする */
+  align-items:center;   /* 縦方向の中央揃え */
+  padding:0 18px;
+}
+
+.topbar .inner{
+  width:100%;
+  max-width:var(--max);
+  margin:0 auto; /* 中央寄せ（左右auto） */
+  display:flex;
+  align-items:center;
+  justify-content:space-between; /* 左右に分かれる */
+}
+
+.brand{
+  font-size:14px;
+  white-space:nowrap; /* 折り返し防止 */
+}
+
+.nav{
+  display:flex;
+  gap:14px; /* リンク間の隙間 */
+  font-size:12px;
+}
+
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  opacity:.92;
+}
+
+.nav a:hover{
+  opacity:1;
+  text-decoration:underline;
+}
+
+/* =========================
+   3) ヘッダー画像
+   ========================= */
+.hero{
+  height:120px;
+
+  /*
+    ✅ backgroundは「複数重ねられる」
+    上：薄い黒グラデ
+    下：画像
+  */
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.18), rgba(0,0,0,.02)),
+    url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=70");
+
+  background-size:cover;      /* 画像を枠いっぱいに広げる */
+  background-position:center; /* 中央を表示 */
+  border-bottom:5px solid #93b9e6;
+}
+
+/* =========================
+   4) 白い枠（ページの中央）
+   ========================= */
+.frame{
+  max-width:var(--max);
+  margin:12px auto 0; /* 上12px、左右autoで中央寄せ */
+  background:#fff;
+  border-left:3px solid #93b9e6;
+  border-right:3px solid #93b9e6;
+}
+
+.content{
+  padding:28px 28px 0; /* 内側の余白（上 左右 下） */
+}
+
+/* =========================
+   5) 見出しのデザイン
+   ========================= */
+.section-title{
+  text-align:center; /* 文字を中央寄せ */
+  margin:8px 0 4px;  /* 上8px 左右0 下4px */
+  font-size:18px;
+}
+
+.section-sub{
+  text-align:center;
+  margin:0 0 18px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.divider{
+  border:none;
+  border-top:1px solid var(--line);
+  margin:18px auto;
+  width:78%;
+}
+
+/* =========================
+   6) 自己紹介文章と画像
+   ========================= */
+.intro-text{
+  max-width:560px;
+  margin:0 auto 16px;
+  font-size:12px;
+  line-height:1.85; /* 行間（読みやすさ） */
+  text-align:center;
+}
+
+.hero-shot{
+  width:380px;
+  max-width:90%;
+  margin:0 auto 18px;
+  overflow:hidden; /* 角丸のはみ出し防止 */
+  box-shadow:var(--shadow);
+}
+
+.hero-shot img{
+  width:100%;
+  display:block; /* 画像の下にできる隙間を消す定番 */
+}
+
+/* =========================
+   7) 2つの青カード（Grid）
+   ========================= */
+.two-cards{
+  display:grid;
+  grid-template-columns:1fr 1fr; /* 2列 */
+  gap:22px;
+  max-width:720px;
+  margin:10px auto 24px;
+}
+
+.info-card{
+  background:var(--card);
+  border-radius:6px;
+  padding:14px 16px;
+}
+
+.info-card h3{
+  margin:0 0 10px;
+  text-align:center;
+  font-size:12px;
+}
+
+.info-card ul{
+  margin:0;
+  padding-left:18px;
+  font-size:12px;
+}
+
+/* =========================
+   8) サンプルカード（Grid）
+   ========================= */
+.samples{ text-align:center; }
+
+.small-sub{
+  font-size:12px;
+  color:var(--muted);
+  margin:0 0 14px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr); /* 4列 */
+  gap:14px;
+  margin:0 auto 18px;
+}
+
+.card{
+  border:1px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+  background:#fff;
+}
+
+.card img{
+  width:100%;
+  height:90px;
+  object-fit:cover; /* 画像をトリミングして枠に合わせる */
+}
+
+.card .body{
+  padding:10px;
+  text-align:left;
+}
+
+.card .title{
+  margin:0 0 6px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.card .desc{
+  margin:0;
+  font-size:11px;
+  color:#555;
+}
+
+/* =========================
+   9) お問い合わせフォーム
+   ========================= */
+.form-wrap{
+  max-width:620px;
+  margin:10px auto 22px;
+}
+
+.form-title{
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  margin:4px 0 12px;
+}
+
+.form{
+  display:flex;
+  flex-direction:column; /* 縦に積む */
+  gap:10px;
+}
+
+.row{
+  display:flex;          /* 横並び（ラベル＋入力） */
+  align-items:center;
+  gap:10px;
+}
+
+.row label{
+  width:96px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  white-space:nowrap;
+}
+
+.row input[type="text"],
+.row input[type="email"]{
+  flex:1;
+  height:30px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:0 10px;
+}
+
+/* クリックした時の枠（見やすい） */
+.row input:focus{
+  outline:none;
+  border-color:#9ab9df;
+  box-shadow:0 0 0 3px rgba(154,185,223,.25);
+}
+
+.btn{
+  width:120px;
+  height:34px;
+  margin:8px auto 0;
+  border:none;
+  border-radius:4px;
+  background:var(--btn);
+  color:#fff;
+  cursor:pointer;
+}
+
+/* =========================
+   10) JSボタン＋フッター
+   ========================= */
+.js-area{
+  text-align:center;
+  padding:6px 0 18px;
+}
+
+.js-title{
+  color:var(--muted);
+  font-size:12px;
+  margin:0 0 8px;
+}
+
+.js-btn{
+  width:110px;
+  height:34px;
+  border:none;
+  border-radius:4px;
+  background:var(--btn);
+  color:#fff;
+  cursor:pointer;
+}
+
+footer{
+  background:var(--sky);
+  text-align:center;
+  padding:18px 10px;
+  color:#fff;
+  font-size:12px;
+  border-top:3px solid #93b9e6;
+}
+
+/* =========================
+   11) レスポンシブ（スマホ対応）
+   ========================= */
+
+/* 920pxより小さいなら、4列→2列 */
+@media (max-width: 920px){
+  .cards{ grid-template-columns:repeat(2, 1fr); }
+}
+
+/* 640pxより小さいなら、全部1列＋フォーム縦並び */
+@media (max-width: 640px){
+  .two-cards{ grid-template-columns:1fr; }
+  .cards{ grid-template-columns:1fr; }
+  .content{ padding:20px 14px 0; }
+
+  .row{
+    flex-direction:column; /* 横→縦 */
+    align-items:stretch;
+  }
+  .row label{ width:auto; }
+  .btn{ width:100%; }
+  .js-btn{ width:100%; }
+}

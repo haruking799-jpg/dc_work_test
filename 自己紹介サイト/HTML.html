@@ -1,0 +1,378 @@
+<!doctype html>
+<!--
+  ✅ ここは「HTMLである宣言」。
+  この1行があると、ブラウザが「最新のHTMLのルール」で表示してくれる。
+  ないと表示が崩れることがあるので、基本は必ず入れる。
+-->
+
+<html lang="ja">
+<!--
+  ✅ <html> は「ページ全体の入れ物」。
+  lang="ja" は「このページは日本語」という意味。
+  読み上げ機能や検索エンジン（SEO）にも関係する。
+-->
+
+<head>
+  <!--
+    ✅ <head> は「ページの設定」置き場。
+    画面に直接表示される内容ではない。
+    文字コード、スマホ表示、CSS読み込みなどを書く。
+  -->
+
+  <meta charset="UTF-8" />
+  <!--
+    ✅ 文字コードの指定。
+    UTF-8にしておくと日本語が文字化けしにくい。
+  -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--
+    ✅ スマホ表示で超重要。
+    これがないとスマホで縮小表示されて小さくなることが多い。
+  -->
+
+  <title>Taro Shuro's Portfolio</title>
+  <!--
+    ✅ ブラウザのタブに表示される文字。
+    検索結果のタイトルにも影響することがある。
+  -->
+
+  <link rel="stylesheet" href="./style.css" />
+  <!--
+    ✅ ここが「HTMLとCSSを分ける」ポイント。
+    style.css（見た目）を読み込む。
+    href="./style.css" は「同じフォルダにある style.css だよ」という意味。
+  -->
+</head>
+
+<body>
+  <!--
+    ✅ <body> は「実際に画面に表示される部分」。
+    ここから下がページの本文。
+  -->
+
+  <!-- =========================
+       1) 上のナビバー（ヘッダー）
+       ========================= -->
+  <header class="topbar">
+    <!--
+      ✅ <header> は「ページ上部の見出し領域」を表すタグ（意味のあるタグ）。
+      class="topbar" は「この部分にCSSを当てるための名前（目印）」。
+      classは自由に名付けてOK。
+    -->
+
+    <div class="inner">
+      <!--
+        ✅ <div> は「意味のない箱」だけど、レイアウト調整用に使う。
+        inner は「中身を最大幅に収めて中央寄せする箱」。
+      -->
+
+      <div class="brand">Taro Shuro's Portfolio</div>
+      <!--
+        ✅ ロゴっぽい文字の部分。
+        divでも良いけど、h1にしてもOK（ページの主題ならh1が自然）。
+      -->
+
+      <nav class="nav" aria-label="ページ内リンク">
+        <!--
+          ✅ <nav> は「ナビゲーション（メニュー）」の意味。
+          aria-label は読み上げ用の説明（アクセシビリティ）。
+        -->
+
+        <a href="#about">自己紹介</a>
+        <!--
+          ✅ <a> はリンク。
+          href="#about" は「このページ内の id="about" の場所へ飛ぶ」という意味。
+        -->
+
+        <a href="#samples">実装サンプル</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================
+       2) ヘッダー画像（ヒーロー）
+       ========================= -->
+  <div class="hero" role="img" aria-label="ヘッダー画像"></div>
+  <!--
+    ✅ ここは画像を <img> で置かず、CSSの background-image で表示している。
+    「ただの飾りの背景画像」はこの方法がよく使われる。
+
+    role="img" と aria-label は、
+    divだけだと「画像」として意味が伝わりにくいので補足している。
+  -->
+
+  <!-- =========================
+       3) 中央の白い枠（ページ本体）
+       ========================= -->
+  <main class="frame">
+    <!--
+      ✅ <main> は「このページの中心となる内容」の意味。
+      frame は「白い枠で囲う」ためのクラス。
+    -->
+
+    <div class="content">
+      <!--
+        ✅ content は「内側の余白」を作る箱。
+      -->
+
+      <!-- =========================
+           3-1) 自己紹介セクション
+           ========================= -->
+      <section id="about">
+        <!--
+          ✅ <section> は「話題のまとまり」。
+          id="about" は「ページ内リンク(#about)の着地点」。
+        -->
+
+        <h2 class="section-title">自己紹介</h2>
+        <!--
+          ✅ 見出しタグ。
+          h1が一番大きい見出し、h2はその次。
+          ページ全体のタイトルがh1なら、各セクションはh2が自然。
+        -->
+
+        <p class="section-sub">Self Introduction</p>
+        <!--
+          ✅ <p> は文章（段落）。
+          pは「改行」ではなく「まとまり」。
+        -->
+
+        <p class="intro-text">
+          はじめまして。ポートフォリオをご覧いただきありがとうございます。<br>
+          HTML/CSS・JavaScript・PHPなどを中心に学習し、Web制作の基礎から実装まで取り組んでいます。<br>
+          「読みやすいコード」と「分かりやすいUI」を意識し、継続的に改善していきます。
+        </p>
+        <!--
+          ✅ <br> は「改行」。
+          多用すると読みづらいので、基本はCSSの余白で調整する方が多い。
+          ただし学習用として分かりやすい。
+        -->
+
+        <div class="hero-shot">
+          <!--
+            ✅ 画像の枠（CSSで影や角丸を付ける）
+          -->
+          <img
+            src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1200&q=75"
+            alt="木と夜空の写真（ダミー）"
+          />
+          <!--
+            ✅ <img> は画像。
+            src = 画像の場所（URL or ローカル）
+            alt = 画像の説明（超重要）
+              ・画像が表示できない時に表示される
+              ・読み上げで使われる
+              ・SEOにも関係
+          -->
+        </div>
+
+        <div class="two-cards">
+          <!--
+            ✅ 2つのカードを並べる箱。
+            CSSの grid を使って2列にする。
+          -->
+
+          <div class="info-card">
+            <h3>得意なもの・趣味</h3>
+            <!--
+              ✅ 本当はh4でもOK。見出しの階層を整えると読みやすい。
+              ここでは「カードの見出し」という意味でh3にしても良い。
+            -->
+            <ul>
+              <!--
+                ✅ <ul> は「順番なしリスト」
+                箇条書きに使う
+              -->
+              <li>コーディング</li>
+              <li>映画鑑賞</li>
+              <li>アウトドア</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>興味がある分野</h3>
+            <ul>
+              <li>Web制作</li>
+              <li>Google</li>
+              <li>React / Java</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider">
+      <!--
+        ✅ <hr> は区切り線（Horizontal Rule）。
+        見た目はCSSで整える。
+      -->
+
+      <!-- =========================
+           3-2) 実装サンプルセクション
+           ========================= -->
+      <section id="samples" class="samples">
+        <h2 class="section-title">実装サンプル</h2>
+        <p class="section-sub">Sample</p>
+        <p class="small-sub">制作サンプル</p>
+
+        <div class="cards">
+          <!--
+            ✅ 作品カードを並べる箱。
+            gridで横に並ぶ。画面が狭い時は2列/1列になる（レスポンシブ）。
+          -->
+
+          <article class="card">
+            <!--
+              ✅ <article> は「独立した1つのコンテンツ」を表すタグ。
+              作品1つ＝article とすると意味が伝わりやすい。
+            -->
+            <img
+              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=75"
+              alt="サンプル画像1"
+            />
+            <div class="body">
+              <p class="title">サンプル作品1</p>
+              <p class="desc">HTML/CSSを中心に、レイアウトと配色を意識して作成しました。</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img
+              src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=75"
+              alt="サンプル画像2"
+            />
+            <div class="body">
+              <p class="title">サンプル作品2</p>
+              <p class="desc">レスポンシブ対応を想定し、カードUIで一覧表示しました。</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img
+              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=75"
+              alt="サンプル画像3"
+            />
+            <div class="body">
+              <p class="title">サンプル作品3</p>
+              <p class="desc">見出し・余白・文字サイズのバランスを調整して読みやすくしています。</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <a href="https://example.com" target="_blank" rel="noopener">
+              <img
+                src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80"
+                alt="サンプル画像4"
+              />
+            </a>
+
+            <div class="body">
+              <p class="title">サンプル作品4</p>
+              <p class="desc">アクセントカラーを統一し、視線誘導を意識したデザインにしました。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <hr class="divider">
+
+      <!-- =========================
+           3-3) お問い合わせフォーム
+           ========================= -->
+      <section id="contact" class="form-wrap">
+        <h2 class="section-title">お問い合わせ</h2>
+        <p class="section-sub">Contact</p>
+
+        <p class="form-title">お問い合わせフォーム</p>
+
+        <form class="form">
+          <!--
+            ✅ <form> は入力を送信するための枠。
+            本当は action="送信先URL" method="POST" などを書く。
+            今回は練習なので送信はしない。
+          -->
+
+          <div class="row">
+            <!--
+              ✅ 1行のセット（ラベル＋入力欄）
+              label は「何を入力する欄なのか」を説明する
+            -->
+            <label>
+              <input type="checkbox" />
+              氏名
+            </label>
+            <input type="text" name="name" placeholder="例：山田 太郎" />
+            <!--
+              ✅ input は1行入力欄
+              type="text"：文字
+              name="name"：送信するときの項目名
+              placeholder：薄い例文
+            -->
+          </div>
+
+          <div class="row">
+            <label>
+              <input type="checkbox" />
+              メールアドレス
+            </label>
+            <input type="email" name="email" placeholder="例：taro@example.com" />
+            <!-- type="email" はメール形式の入力を助けてくれる -->
+          </div>
+
+          <div class="row">
+            <label>
+              <input type="checkbox" />
+              件名
+            </label>
+            <input type="text" name="subject" placeholder="例：制作依頼のご相談" />
+          </div>
+
+          <div class="row">
+            <label>
+              <input type="checkbox" />
+              お問い合わせ内容
+            </label>
+            <input type="text" name="message" placeholder="例：◯◯について相談したいです" />
+            <!--
+              ✅ 本当は長文入力には <textarea> を使うことが多い。
+              ここは元の見た目に合わせて input にしている。
+            -->
+          </div>
+
+          <button class="btn" type="button">送信</button>
+          <!--
+            ✅ type="button" は「送信しないボタン」。
+            type="submit" にするとフォーム送信が走る。
+          -->
+        </form>
+      </section>
+
+      <hr class="divider">
+
+      <!-- =========================
+           3-4) JavaScript課題（ボタン）
+           ========================= -->
+      <section class="js-area">
+        <p class="js-title">JavaScript課題</p>
+        <button class="js-btn" type="button" onclick="alert('ボタンが押されました！')">
+          押す！
+        </button>
+        <!--
+          ✅ onclick は「クリックした時に実行するJavaScript」。
+          alert(...) は「小さなポップアップ」を出す命令。
+          本格的には別JSファイルに書くのがおすすめ（次のステップ）。
+        -->
+      </section>
+
+    </div>
+
+    <footer>
+      Copyright © 2023 Taro Shuro
+    </footer>
+    <!--
+      ✅ footer はページ下部の情報。
+    -->
+  </main>
+</body>
+</html>

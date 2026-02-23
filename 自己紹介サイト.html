@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taro Shuro's Portfolio</title>
+  <style>
+    :root{
+      --nav:#1f2b5a;
+      --sky:#9fc0e6;
+      --card:#8fb5df;
+      --text:#1b1b1b;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --btn:#7aa7d8;
+      --max: 920px;
+      --radius: 8px;
+      --shadow: 0 6px 18px rgba(0,0,0,.10);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      color:var(--text);
+      background: linear-gradient(#ffffff 0, #ffffff 72%, var(--sky) 72%, var(--sky) 100%);
+    }
+
+    /* ===== Top bar ===== */
+    .topbar{
+      background:var(--nav);
+      color:#fff;
+      height:44px;
+      display:flex;
+      align-items:center;
+      padding:0 18px;
+    }
+    .topbar .inner{
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      font-size:14px;
+      letter-spacing:.2px;
+      opacity:.95;
+      white-space:nowrap;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-size:12px;
+    }
+    .nav a{
+      color:#fff;
+      text-decoration:none;
+      opacity:.92;
+    }
+    .nav a:hover{opacity:1;text-decoration:underline}
+
+    /* ===== Hero ===== */
+    .hero{
+      height:120px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.18), rgba(0,0,0,.02)),
+        url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=70");
+      background-size:cover;
+      background-position:center;
+      border-bottom: 5px solid #93b9e6;
+    }
+
+    /* ===== Page frame ===== */
+    .frame{
+      max-width: var(--max);
+      margin: 12px auto 0;
+      background:#fff;
+      border-left: 3px solid #93b9e6;
+      border-right: 3px solid #93b9e6;
+      box-shadow: 0 0 0 1px rgba(147,185,230,.25);
+    }
+    .content{
+      padding: 28px 28px 0;
+    }
+
+    /* ===== Section headings ===== */
+    .section-title{
+      text-align:center;
+      margin: 8px 0 4px;
+      font-size:18px;
+      letter-spacing:.3px;
+    }
+    .section-sub{
+      text-align:center;
+      margin:0 0 18px;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .divider{
+      border:none;
+      border-top:1px solid var(--line);
+      margin: 18px auto;
+      width: 78%;
+    }
+
+    /* ===== Intro text + image ===== */
+    .intro-text{
+      max-width: 560px;
+      margin: 0 auto 16px;
+      font-size:12px;
+      color:#444;
+      line-height:1.85;
+      text-align:center;
+    }
+    .hero-shot{
+      width: 380px;
+      max-width: 90%;
+      margin: 0 auto 18px;
+      border-radius: 3px;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    .hero-shot img{
+      width:100%;
+      display:block;
+    }
+
+    /* ===== Two info cards ===== */
+    .two-cards{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin: 10px auto 24px;
+      max-width: 720px;
+    }
+    .info-card{
+      background: var(--card);
+      border-radius: 6px;
+      padding: 14px 16px 12px;
+      color:#0f172a;
+      box-shadow: 0 1px 0 rgba(0,0,0,.06);
+      min-height: 92px;
+    }
+    .info-card h4{
+      margin:0 0 10px;
+      font-size:12px;
+      letter-spacing:.2px;
+      text-align:center;
+      opacity:.95;
+    }
+    .info-card ul{
+      margin:0;
+      padding-left: 18px;
+      font-size:12px;
+      line-height:1.8;
+    }
+
+    /* ===== Samples grid ===== */
+    .samples{
+      text-align:center;
+      margin-top: 6px;
+    }
+    .samples .small-sub{
+      font-size:12px;
+      color:var(--muted);
+      margin:0 0 14px;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 0 auto 18px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius: 8px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    }
+    .card img{
+      width:100%;
+      height: 90px;
+      object-fit: cover;
+      display:block;
+    }
+    .card .body{
+      padding: 10px 10px 12px;
+      text-align:left;
+    }
+    .card .title{
+      font-size:12px;
+      margin: 0 0 6px;
+      font-weight: 700;
+    }
+    .card .desc{
+      margin:0;
+      font-size:11px;
+      color:#555;
+      line-height:1.6;
+    }
+
+    /* ===== Form ===== */
+    .form-wrap{
+      max-width: 620px;
+      margin: 10px auto 22px;
+      text-align:left;
+    }
+    .form-title{
+      text-align:center;
+      font-size:12px;
+      color:var(--muted);
+      margin: 4px 0 12px;
+    }
+    .form{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      padding: 8px 0 0;
+    }
+    .row{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+    .row label{
+      width: 96px;
+      font-size:12px;
+      color:#333;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      white-space:nowrap;
+    }
+    .row input[type="text"],
+    .row input[type="email"]{
+      flex:1;
+      height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 0 10px;
+      font-size:12px;
+      outline:none;
+    }
+    .row input:focus{
+      border-color:#9ab9df;
+      box-shadow: 0 0 0 3px rgba(154,185,223,.25);
+    }
+    .btn{
+      width: 120px;
+      height: 34px;
+      border:none;
+      border-radius: 4px;
+      background: var(--btn);
+      color:#fff;
+      font-size:12px;
+      cursor:pointer;
+      margin: 8px auto 0;
+      box-shadow: 0 2px 0 rgba(0,0,0,.08);
+    }
+    .btn:hover{filter:brightness(1.03)}
+    .btn:active{transform: translateY(1px)}
+
+    /* ===== JS section ===== */
+    .js-area{
+      text-align:center;
+      padding: 6px 0 18px;
+    }
+    .js-title{
+      font-size:12px;
+      color:var(--muted);
+      margin: 0 0 8px;
+    }
+    .js-btn{
+      width: 110px;
+      height: 34px;
+      border:none;
+      border-radius: 4px;
+      background: var(--btn);
+      color:#fff;
+      font-size:12px;
+      cursor:pointer;
+      box-shadow: 0 2px 0 rgba(0,0,0,.08);
+    }
+    .js-btn:hover{filter:brightness(1.03)}
+    .js-btn:active{transform: translateY(1px)}
+
+    /* ===== Footer ===== */
+    footer{
+      background: var(--sky);
+      text-align:center;
+      padding: 18px 10px;
+      color:#fff;
+      font-size:12px;
+      margin-top: 0;
+      border-top: 3px solid #93b9e6;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 920px){
+      .cards{grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 640px){
+      .two-cards{grid-template-columns: 1fr;}
+      .cards{grid-template-columns: 1fr;}
+      .content{padding: 20px 14px 0;}
+      .row{flex-direction:column; align-items:stretch;}
+      .row label{width:auto;}
+      .btn{width: 100%;}
+      .js-btn{width: 100%;}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- top bar -->
+  <header class="topbar">
+    <div class="inner">
+      <div class="brand">Taro Shuro's Portfolio</div>
+      <nav class="nav" aria-label="ページ内リンク">
+        <a href="#about">自己紹介</a>
+        <a href="#samples">実装サンプル</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <div class="hero" role="img" aria-label="ヘッダー画像"></div>
+
+  <!-- framed content -->
+  <main class="frame">
+    <div class="content">
+      <!-- about -->
+      <section id="about">
+        <h2 class="section-title">自己紹介</h2>
+        <p class="section-sub">Self Introduction</p>
+
+        <p class="intro-text">
+          はじめまして。ポートフォリオをご覧いただきありがとうございます。<br>
+          HTML/CSS・JavaScript・PHPなどを中心に学習し、Web制作の基礎から実装まで取り組んでいます。<br>
+          「読みやすいコード」と「分かりやすいUI」を意識し、継続的に改善していきます。
+        </p>
+
+        <div class="hero-shot">
+          <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1200&q=75"
+               alt="木と夜空の写真（ダミー）">
+        </div>
+
+        <div class="two-cards">
+          <div class="info-card">
+            <h4>得意なもの・趣味</h4>
+            <ul>
+              <li>コーディング</li>
+              <li>映画鑑賞</li>
+              <li>アウトドア</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h4>興味がある分野</h4>
+            <ul>
+              <li>Web制作</li>
+              <li>Google</li>
+              <li>React / Java</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider">
+
+      <!-- samples -->
+      <section id="samples" class="samples">
+        <h2 class="section-title">実装サンプル</h2>
+        <p class="section-sub">Sample</p>
+
+        <div class="small-sub">制作サンプル</div>
+
+        <div class="cards">
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=75"
+                 alt="サンプル画像1">
+            <div class="body">
+              <p class="title">サンプル作品1</p>
+              <p class="desc">HTML/CSSを中心に、レイアウトと配色を意識して作成しました。</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=75"
+                 alt="サンプル画像2">
+            <div class="body">
+              <p class="title">サンプル作品2</p>
+              <p class="desc">レスポンシブ対応を想定し、カードUIで一覧表示しました。</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=75"
+                 alt="サンプル画像3">
+            <div class="body">
+              <p class="title">サンプル作品3</p>
+              <p class="desc">見出し・余白・文字サイズのバランスを調整して読みやすくしています。</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1520975958225-2f2d8a153f1a?auto=format&fit=crop&w=900&q=75"
+                 alt="サンプル画像4">
+            <div class="body">
+              <p class="title">サンプル作品4</p>
+              <p class="desc">アクセントカラーを統一し、視線誘導を意識したデザインにしました。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <hr class="divider">
+
+      <!-- contact -->
+      <section id="contact" class="form-wrap">
+        <div class="form-title">お問い合わせフォーム</div>
+
+        <form class="form">
+          <div class="row">
+            <label><input type="checkbox" /> 氏名</label>
+            <input type="text" name="name" placeholder="" />
+          </div>
+
+          <div class="row">
+            <label><input type="checkbox" /> メールアドレス</label>
+            <input type="email" name="email" placeholder="" />
+          </div>
+
+          <div class="row">
+            <label><input type="checkbox" /> 件名</label>
+            <input type="text" name="subject" placeholder="" />
+          </div>
+
+          <div class="row">
+            <label><input type="checkbox" /> お問い合わせ内容</label>
+            <input type="text" name="message" placeholder="" />
+          </div>
+
+          <button class="btn" type="button">送信</button>
+        </form>
+      </section>
+
+      <hr class="divider">
+
+      <!-- JavaScript -->
+      <section class="js-area">
+        <div class="js-title">JavaScript課題</div>
+        <button class="js-btn" type="button" onclick="alert('ボタンが押されました！')">押す！</button>
+      </section>
+    </div>
+
+    <footer>
+      Copyright © 2023 Taro Shuro
+    </footer>
+  </main>
+</body>
+</html>
